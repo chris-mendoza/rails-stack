@@ -1,0 +1,3 @@
+---
+- name: Apt-get Update
+  apt: update_cache=yes upgrade=dist
