@@ -1,0 +1,32 @@
+- name: Build App Nodes
+  gather_facts: False
+  hosts: localhost
+  tasks:
+    - name: Build app Node
+      local_action:
+        module: rax
+        credentials: ~/.rackspace_cloud_credentials
+        name: chrism-app-
+        count: 2
+        exact_count: yes
+        flavor: performance1-1
+        image: ubuntu-1204-lts-precise-pangolin-pvhvm
+        wait: yes
+        state: present
+        group: db
+        files:
+           /root/.ssh/authorized_keys: ~/.ssh/id_rsa.pub
+        networks:
+           - private
+           - public
+      register: rax
+
+    - name: Add created servers to app group
+      local_action:
+        module: add_host
+        hostname: "{{ item.name }}"
+        ansible_ssh_host: "{{ item.rax_accessipv4 }}"
+        ansible_ssh_pass: "{{ item.rax_adminpass }} "
+        groupname: app
+      with_items: rax.success
+      when: rax.action =='create'

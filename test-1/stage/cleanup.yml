@@ -1,4 +1,4 @@
-- Name: Delete all Web/DB nodes
+- Name: Delete all Web nodes
   gather_facts: False
   hosts: localhost
   tasks:
@@ -7,7 +7,7 @@
         module: rax
         credentials: ~/.rackspace_cloud_credentials
         name: chrism-web-
-        count: 4
+        count: 2
         flavor: performance1-1
         image: ubuntu-1204-lts-precise-pangolin-pvhvm
         wait: yes
