@@ -1,0 +1,47 @@
+- name: Build Web Nodes
+  gather_facts: False
+  hosts: localhost
+  tasks:
+    - name: Build Web Nodes
+      local_action:
+        module: rax
+        credentials: ~/.rackspace_cloud_credentials
+        name: chrism-web-
+        count: 2
+        flavor: performance1-1
+        image: ubuntu-1204-lts-precise-pangolin-pvhvm
+        wait: yes
+        state: present
+        group: web
+        files:
+          /root/.ssh/authorized_keys: ~/.ssh/id_rsa.pub
+        networks:
+          - private
+          - public
+      register: rax
+    - name: Add created servers to web group
+      local_action:
+        module: add_host
+        hostname: "{{ item.name }}"
+        ansible_ssh_host: "{{ item.rax_accessipv4 }}"
+        ansible_ssh_pass: "{{ item.rax_adminpass }} "
+        groupname: web
+      with_items: rax.success
+      when: rax.action =='create'
+    - name: Build DB Node
+      local_action:
+        module: rax
+        credentials: ~/.rackspace_cloud_credentials
+        name: chrism-db-
+        count: 1
+        flavor: performance1-1
+        image: ubuntu-1204-lts-precise-pangolin-pvhvm
+        wait: yes
+        state: present
+        group: web
+        files:
+          /root/.ssh/authorized_keys: ~/.ssh/id_rsa.pub
+        networks:
+          - private
+          - public
+        register: rax
