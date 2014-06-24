@@ -6,7 +6,8 @@
       local_action:
         module: rax
         credentials: ~/.rackspace_cloud_credentials
-        name: chrism-ans
+        name: chrism-ans%03
+        count: 2
         flavor: performance1-1
         image: ubuntu-1204-lts-precise-pangolin-pvhvm
         wait: yes
@@ -33,3 +34,9 @@
   roles:
     - common
     - web
+- name: Configure DB Servers
+  hosts: db
+  user: root
+  roles:
+    - common
+    - db
