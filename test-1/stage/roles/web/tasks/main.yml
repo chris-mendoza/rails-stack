@@ -1,3 +1,6 @@
 - name: install nginx
   apt: name=nginx state=installed
-  tags: nginx
+
+- name: Copy nginx config
+  template: src=default.conf dest=/etc/nginx/sites-enabled/wikistorm.conf
+  notify: restart nginx
