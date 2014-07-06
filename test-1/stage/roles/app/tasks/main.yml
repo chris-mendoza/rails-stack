@@ -1,0 +1,14 @@
+- name: Install RVM
+  shell: \curl -sSL https://get.rvm.io | bash
+
+- name: Source RVM afte install
+
+- name: Install Ruby with RVM
+
+- name: Set default Ruby version
+
+- name: Create gemset for rails
+
+- name: Set default gemset to persist through reboot
+
+- name: Install gems needed
