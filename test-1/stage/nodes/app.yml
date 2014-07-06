@@ -13,7 +13,7 @@
         image: ubuntu-1204-lts-precise-pangolin-pvhvm
         wait: yes
         state: present
-        group: db
+        group: app 
         files:
            /root/.ssh/authorized_keys: ~/.ssh/id_rsa.pub
         networks:
