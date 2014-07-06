@@ -2,7 +2,7 @@
   gather_facts: False
   hosts: localhost
   tasks:
-    - name: Build Web Nodes
+    - name: Delete Web Nodes
       local_action:
         module: rax
         credentials: ~/.rackspace_cloud_credentials
