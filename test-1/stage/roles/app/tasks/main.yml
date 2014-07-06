@@ -1,14 +1,20 @@
 - name: Install RVM
-  shell: \curl -sSL https://get.rvm.io | bash
+  shell: curl -sSL https://get.rvm.io | bash
 
 - name: Source RVM afte install
+  shell: source /etc/profile.d/rvm.sh
 
 - name: Install Ruby with RVM
+  shell: rvm install 2.1.1
 
 - name: Set default Ruby version
+  shell: rvm --default use 2.1.1
 
 - name: Create gemset for rails
+  shell: rvm gemset create rails
 
 - name: Set default gemset to persist through reboot
+  shell: rvm use 2.1.1@rails --default
 
 - name: Install gems needed
+  shell: gem install rails unicorn 
