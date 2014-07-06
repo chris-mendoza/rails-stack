@@ -1,6 +1,6 @@
 #!/bin/bash
 #This is the master provision script.
 
-ansible-playbook web.yml
-ansible-playbook app.yml
-ansible-playbook db.yml
+ansible-playbook nodes/web.yml
+ansible-playbook nodes/app.yml
+ansible-playbook nodes/db.yml
