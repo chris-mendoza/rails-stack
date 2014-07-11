@@ -1,3 +1,6 @@
 ---
 - name: Apt-get Update
   apt: update_cache=yes upgrade=dist
+
+- name: Install Vim
+  apt: name=vim state=installed
