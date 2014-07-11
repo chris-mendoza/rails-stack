@@ -14,4 +14,4 @@
   shell: /usr/local/rvm/bin/rvm use 2.1.1@rails --default
 
 - name: Install gems needed
-  shell: gem install rails unicorn 
+  shell: /usr/local/rvm/rubies/ruby-2.1.1/bin/gem install rails unicorn 
