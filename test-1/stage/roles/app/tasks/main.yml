@@ -1,9 +1,6 @@
 - name: Install RVM
   shell: curl -sSL https://get.rvm.io | bash
 
-- name: Source RVM afte install
-  shell: source /etc/profile.d/rvm.sh
-
 - name: Install Ruby with RVM
   shell: rvm install 2.1.1
 
