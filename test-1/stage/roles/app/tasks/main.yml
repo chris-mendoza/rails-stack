@@ -1,17 +1,17 @@
 - name: Install RVM
-  shell: curl -sSL https://get.rvm.io | bash
+  shell: \curl -L https://get.rvm.io | bash -s stable --autolibs=3 creates=~/.rvm
 
 - name: Install Ruby with RVM
-  shell: rvm install 2.1.1
+  shell: ~/.rvm/bin/rvm install --default 2.1.1 creates=~/.rvm/rubies/2.1.1
 
 - name: Set default Ruby version
-  shell: rvm --default use 2.1.1
+  shell: ~/.rvm/bin/rvm --default use 2.1.1
 
 - name: Create gemset for rails
-  shell: rvm gemset create rails
+  shell: ~/.rvm/bin/rvm gemset create rails
 
 - name: Set default gemset to persist through reboot
-  shell: rvm use 2.1.1@rails --default
+  shell: ~/.rvm/bin/rvm use 2.1.1@rails --default
 
 - name: Install gems needed
   shell: gem install rails unicorn 
