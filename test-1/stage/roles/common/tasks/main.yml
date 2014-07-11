@@ -4,3 +4,6 @@
 
 - name: Install Vim
   apt: name=vim state=installed
+
+- name: Configure Vim as default
+  shell: update-alternatives --set editor /usr/bin/vim.basic
