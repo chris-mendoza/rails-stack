@@ -31,8 +31,8 @@
 - name: Install Git
   apt: name=git state=latest
 
-- name: create unicorn user
-  user: name=unicorn comment="Unicorn" uid=1150 group=unicorn home=/var/www/
-
 - name: create unicorn group
   group: name=unicorn gid=1150 state=present
+
+- name: create unicorn user
+  user: name=unicorn comment="Unicorn" uid=1150 group=unicorn home=/var/www/
