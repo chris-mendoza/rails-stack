@@ -18,3 +18,15 @@
 
 - name: Install gems needed
   shell: bash -lc "/usr/local/rvm/rubies/ruby-2.1.1/bin/gem install rails unicorn --no-ri --no-rdoc" executable=/bin/bash
+
+- name: copy firewall config
+  template: src=ufw.sh dest=/root/ufw.sh
+
+- name: set permissions for firewall script
+  file: path=/root/ufw.sh owner=root group=root mode=0777
+
+- name: run firewall config
+  command: /root/ufw.sh
+
+- name: delete firewall script
+  file: path=/root/ufw.sh state=absent

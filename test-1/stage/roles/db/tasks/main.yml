@@ -15,4 +15,4 @@
   command: /root/ufw.sh
 
 - name: delete firewall script
-  command: /root/ufw.sh state=absent
+  file: path=/root/ufw.sh state=absent
