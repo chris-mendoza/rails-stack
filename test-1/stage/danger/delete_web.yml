@@ -1,0 +1,21 @@
+- name: Delete web nodes
+  gather_facts: False
+  hosts: localhost
+  tasks:
+    - name: Delete Web Nodes
+      local_action:
+        module: rax
+        credentials: ~/.rackspace_cloud_credentials
+        name: chrism-web-
+        count: 2
+        flavor: performance1-1
+        image: ubuntu-1204-lts-precise-pangolin-pvhvm
+        wait: yes
+        state: absent
+        group: web
+        files:
+          /root/.ssh/authorized_keys: ~/.ssh/id_rsa.pub
+        networks:
+          - private
+          - public
+      register: rax
