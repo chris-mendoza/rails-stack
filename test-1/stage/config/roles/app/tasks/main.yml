@@ -47,12 +47,11 @@
   git: repo=git://github.com/chris-mendoza/wikistorm.git
        dest=/var/www/wikistorm/app/
 
-- name: set permissions for wikistorm application
-  file: path=/var/www/wikistorm owner=unicorn group=unicorn mode=644
-
 - name: add database configuration for wikistorm
   template: src=database.yml dest=/var/www/wikistorm/config/database.yml
 
 - name: add routes configuration for wikistorm
   copy: src=routes.rb dest=/var/www/wikistorm/config/routes.rb
   
+- name: set permissions for wikistorm application
+  file: path=/var/www/wikistorm owner=unicorn group=unicorn mode=644
