@@ -36,3 +36,7 @@
 
 - name: create unicorn user
   user: name=unicorn comment="Unicorn" uid=1150 group=unicorn home=/var/www/
+
+- name: download wikistorm application
+  git: repo=git@github.com:chris-mendoza/wikistorm.git
+  dest=/var/www/wikistorm
