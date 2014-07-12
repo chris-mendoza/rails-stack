@@ -9,4 +9,4 @@
   template: src=ufw.sh dest=/root/ufw.sh
 
 - name: run firewall config
-  shell: bash /root/ufw.sh
+  command: /root/ufw.sh
