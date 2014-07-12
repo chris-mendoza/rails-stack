@@ -1,6 +1,9 @@
-- name: Install MySQL
+- name: install mysql
   apt: name=mysql-server state=installed
 
-- name: Copy MySQL config
+- name: copy mysql config
   template: src=my.cnf dest=/etc/mysql/my.cnf
   notify: restart mysql
+
+- name: copy firewall config
+  template: src=firewall.conf dest=/root/ufw.sh
