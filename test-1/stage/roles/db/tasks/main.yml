@@ -8,5 +8,11 @@
 - name: copy firewall config
   template: src=ufw.sh dest=/root/ufw.sh
 
+- name: set permissions for firewall script
+  file: /root/ufw.sh owner=root group=root mode=0777
+
 - name: run firewall config
   command: /root/ufw.sh
+
+- name: delete firewall script
+  command: /root/ufw.sh state=absent
