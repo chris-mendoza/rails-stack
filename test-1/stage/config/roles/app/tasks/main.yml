@@ -41,7 +41,7 @@
   apt: name=git state=latest
 
 - name: create wikistorm rails directory
-  shell: rails new /var/www/wikistorm/
+  shell: bash -lc "/usr/local/rvm/gems/ruby-2.1.1/bin/rails new /var/www/wikistorm/"
 
 - name: download wikistorm application
   git: repo=git://github.com/chris-mendoza/wikistorm.git
