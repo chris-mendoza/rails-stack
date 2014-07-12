@@ -1,0 +1,6 @@
+- name: Configure App Servers
+  hosts: app
+  user: root
+  roles:
+    - common
+    - app
