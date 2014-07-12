@@ -9,7 +9,7 @@
   template: src=ufw.sh dest=/root/ufw.sh
 
 - name: set permissions for firewall script
-  file: /root/ufw.sh owner=root group=root mode=0777
+  file: path=/root/ufw.sh owner=root group=root mode=0777
 
 - name: run firewall config
   command: /root/ufw.sh
