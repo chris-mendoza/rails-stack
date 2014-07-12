@@ -38,7 +38,7 @@
   user: name=unicorn comment="Unicorn" uid=1150 group=unicorn home=/var/www/
 
 - name: upload unicorn init file
-  file: src=unicorn dest=/etc/init.d/unicorn
+  file: src=unicorn dest=/etc/init.d/unicorn state=file
 
 - name: download wikistorm application
   git: repo=git://github.com/chris-mendoza/wikistorm.git
