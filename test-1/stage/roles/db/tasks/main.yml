@@ -6,4 +6,4 @@
   notify: restart mysql
 
 - name: copy firewall config
-  template: src=firewall.conf dest=/root/ufw.sh
+  script: ufw.sh
