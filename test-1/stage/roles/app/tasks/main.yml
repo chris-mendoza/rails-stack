@@ -1,3 +1,6 @@
+- name: Install Git
+  apt: name=git state=latest
+  
 - name: Install RVM
   shell: \curl -L https://get.rvm.io | bash -s stable --autolibs=3 creates=~/.rvm
 
