@@ -3,4 +3,4 @@
 
 - name: Copy MySQL config
   template: src=my.cnf dest=/etc/mysql/my.cnf
-  notify: restart nginx
+  notify: restart mysql
