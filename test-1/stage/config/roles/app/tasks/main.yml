@@ -28,9 +28,6 @@
 - name: delete firewall script
   file: path=/root/ufw.sh state=absent
 
-- name: Install Git
-  apt: name=git state=latest
-
 - name: create unicorn group
   group: name=unicorn gid=1150 state=present
 
@@ -38,11 +35,24 @@
   user: name=unicorn comment="Unicorn" uid=1150 group=unicorn home=/var/www/
 
 - name: upload unicorn init file
-  file: src=unicorn dest=/etc/init.d/unicorn state=file
+  copy: src=unicorn dest=/etc/init.d/unicorn mode=755
+
+- name: install git
+  apt: name=git state=latest
+
+- name: create wikistorm rails directory
+  shell: rails new /var/www/wikistorm/
 
 - name: download wikistorm application
   git: repo=git://github.com/chris-mendoza/wikistorm.git
-       dest=/var/www/wikistorm/
+       dest=/var/www/wikistorm/app/
 
 - name: set permissions for wikistorm application
   file: path=/var/www/wikistorm owner=unicorn group=unicorn mode=644
+
+- name: add database configuration for wikistorm
+  template: src=database.yml dest=/var/www/wikistorm/config/database.yml
+
+- name: add routes configuration for wikistorm
+  copy: src=routes.rb dest=/var/www/wikistorm/config/routes.rb
+  
