@@ -37,6 +37,12 @@
 - name: create unicorn user
   user: name=unicorn comment="Unicorn" uid=1150 group=unicorn home=/var/www/
 
+- name: upload unicorn init file
+  file: src=unicorn dest=/etc/init.d/unicorn
+
 - name: download wikistorm application
-  git: repo=git@github.com:chris-mendoza/wikistorm.git
-  dest=/var/www/wikistorm
+  git: repo=git://github.com/chris-mendoza/wikistorm.git
+       dest=/var/www/wikistorm/
+
+- name: set permissions for wikistorm application
+  file: path=/var/www/wikistorm owner=unicorn group=unicorn mode=644
