@@ -2,19 +2,19 @@
   apt: name=git state=latest
   
 - name: Install RVM
-  shell: \curl -L https://get.rvm.io | bash -s stable --autolibs=3 creates=~/.rvm
+  shell: curl -L https://get.rvm.io | bash -s stable --autolibs=3 creates=~/.rvm" executable=/bin/bash
 
 - name: Install Ruby with RVM
-  shell: /usr/local/rvm/bin/rvm install --default 2.1.1 creates=~/.rvm/rubies/2.1.1
+  shell: /usr/local/rvm/bin/rvm install --default 2.1.1 creates=~/.rvm/rubies/2.1.1 executable=/bin/bash
 
 - name: Set default Ruby version
-  shell: /usr/local/rvm/bin/rvm --default use 2.1.1
+  shell: bash -lc "/usr/local/rvm/bin/rvm --default use 2.1.1" executable=/bin/bash
 
 - name: Create gemset for rails
-  shell: /usr/local/rvm/bin/rvm gemset create rails
+  shell: bash -lc "/usr/local/rvm/bin/rvm gemset create rails" executable=/bin/bash
 
 - name: Set default gemset to persist through reboot
-  shell: /usr/local/rvm/bin/rvm use 2.1.1@rails --default
+  shell: bash -lc "/usr/local/rvm/bin/rvm use 2.1.1@rails --default" executable=/bin/bash
 
 - name: Install gems needed
-  shell: /usr/local/rvm/rubies/ruby-2.1.1/bin/gem install rails unicorn 
+  shell: bash -lc "/usr/local/rvm/rubies/ruby-2.1.1/bin/gem install rails unicorn --no-ri --no-rdoc" executable=/bin/bash
