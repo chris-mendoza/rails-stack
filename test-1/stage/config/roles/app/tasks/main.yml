@@ -57,7 +57,7 @@
   copy: src=routes.rb dest=/var/www/wikistorm/config/routes.rb
   
 - name: add unicorn configuration to wikistorm config
-  copy: src=unicorn.rb dest=/var/www/wikistorm/config/unicorn.rb
+  template: src=unicorn.rb dest=/var/www/wikistorm/config/unicorn.rb
 
 - name: create unicorn directory
   file: path=/etc/unicorn state=directory
