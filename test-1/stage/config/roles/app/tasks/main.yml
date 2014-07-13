@@ -43,6 +43,9 @@
 - name: create wikistorm rails directory
   shell: bash -lc "/usr/local/rvm/gems/ruby-2.1.1/bin/rails new /var/www/wikistorm/"
 
+- name: remove pre-generated app folder
+  file: path=/var/www/wikistorm/app state=absent
+
 - name: download wikistorm application
   git: repo=git://github.com/chris-mendoza/wikistorm.git
        dest=/var/www/wikistorm/app/
