@@ -41,7 +41,7 @@
   apt: name=git state=latest
 
 - name: create wikistorm rails directory
-  shell: bash -lc "/usr/local/rvm/gems/ruby-2.1.1/bin/rails new /var/www/wikistorm/"
+  shell: bash -lc "/usr/local/rvm/gems/ruby-2.1.1/bin/rails new --force /var/www/wikistorm/"
 
 - name: remove pre-generated app folder
   file: path=/var/www/wikistorm/app state=absent
