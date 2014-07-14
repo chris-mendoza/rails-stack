@@ -4,8 +4,9 @@ default: &default
   pool: 5
   username: wikistormdb
   password: 
-  host: {{ hostvars['chrism-db-1']['ansible_eth1']['ipv4']['address'] }}
-
+  {% for host in groups['db'] %}
+  host: {{ hostvars[host]['rax_addresses']['private'][0]['addr'] }}
+  {% endfor %}
 development:
   <<: *default
   database: wikistormdev
