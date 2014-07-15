@@ -78,7 +78,7 @@
   file: path=/var/www/wikistorm owner=unicorn group=unicorn mode=644 recurse=yes
 
 - name: install dependencies
-  command: "/usr/local/rvm/gems/ruby-2.1.1@global/bin/bundle install --gemfile=/var/www/wikistorm/Gemfile"
+  shell: bash -lc "/usr/local/rvm/gems/ruby-2.1.1@global/bin/bundle install --gemfile=/var/www/wikistorm/Gemfile" executable=/bin/bash
 
 - name: use rake to create databases for wikistorm
   command: "rake -f /var/www/wikistorm/Rakefile db:migrate"
