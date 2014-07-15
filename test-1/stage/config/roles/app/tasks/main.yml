@@ -81,4 +81,4 @@
   shell: bash -lc "/usr/local/rvm/gems/ruby-2.1.1@global/bin/bundle install --gemfile=/var/www/wikistorm/Gemfile" executable=/bin/bash
 
 - name: use rake to create databases for wikistorm
-  command: "rake -f /var/www/wikistorm/Rakefile db:migrate"
+  command: bash -lc "rake -f /var/www/wikistorm/Rakefile db:migrate" executable=/bin/bash
