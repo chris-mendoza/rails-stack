@@ -13,8 +13,11 @@
 - name: Set default gemset to persist through reboot
   shell: bash -lc "/usr/local/rvm/bin/rvm use 2.1.1@rails --default" executable=/bin/bash
 
+- name: install mysqlclientlib-dev
+  apt: name=mysqlclientlib-dev state=latest
+
 - name: Install gems needed
-  shell: bash -lc "/usr/local/rvm/rubies/ruby-2.1.1/bin/gem install rails unicorn fog --no-ri --no-rdoc" executable=/bin/bash
+  shell: bash -lc "/usr/local/rvm/rubies/ruby-2.1.1/bin/gem install rails unicorn fog mysql2 --no-ri --no-rdoc" executable=/bin/bash
 
 - name: copy firewall config
   template: src=ufw.sh dest=/root/ufw.sh
@@ -70,6 +73,6 @@
 
 - name: add gemfile for wikistorm configuration
   copy: src=Gemfile dest=/var/www/wikistorm/gemfile
-  
+
 - name: set permissions for wikistorm application
   file: path=/var/www/wikistorm owner=unicorn group=unicorn mode=644 recurse=yes
