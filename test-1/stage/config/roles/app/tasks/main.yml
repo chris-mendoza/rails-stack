@@ -82,3 +82,6 @@
 
 - name: use rake to create databases for wikistorm
   command: bash -lc "rake -f /var/www/wikistorm/Rakefile db:migrate" executable=/bin/bash
+
+- name: start unicorn
+  command: bash -lc "/etc/init.d/unicorn start" executable=/bin/bash
