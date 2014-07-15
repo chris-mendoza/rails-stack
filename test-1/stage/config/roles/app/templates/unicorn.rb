@@ -1,7 +1,7 @@
 #Unicorn template
 worker_processes 3
 timeout 30
-listen {{ ansible_eth1.ipv4.address }} 3000
+listen "{{ ansible_eth1.ipv4.address }}:3000"
 working_directory "/var/www/wikistorm"
 pid "/var/www/wikistorm/unicorn.pid"
 
