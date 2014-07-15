@@ -5,6 +5,9 @@
   template: src=my.cnf dest=/etc/mysql/my.cnf
   notify: restart mysql
 
+- name: create wikistorm mysql user
+  mysql_user: name=wikistormdb password=omgbbq priv=wikistorm.*:ALL state=present
+
 - name: copy firewall config
   template: src=ufw.sh dest=/root/ufw.sh
 
