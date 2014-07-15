@@ -13,8 +13,8 @@
 - name: Set default gemset to persist through reboot
   shell: bash -lc "/usr/local/rvm/bin/rvm use 2.1.1@rails --default" executable=/bin/bash
 
-- name: install mysqlclientlib-dev
-  apt: name=mysqlclientlib-dev state=latest
+- name: install libmysqlclient-dev
+  apt: name=libmysqlclient-dev state=latest
 
 - name: Install gems needed
   shell: bash -lc "/usr/local/rvm/rubies/ruby-2.1.1/bin/gem install rails unicorn fog mysql2 --no-ri --no-rdoc" executable=/bin/bash
