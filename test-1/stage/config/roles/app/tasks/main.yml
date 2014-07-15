@@ -68,5 +68,8 @@
 - name: add unicorn configuration to etc for init file
   copy: src=wikistorm.conf dest=/etc/unicorn/wikistorm.conf
 
+- name: add gemfile for wikistorm configuration
+  copy: src=Gemfile dest=/var/www/wikistorm/gemfile
+  
 - name: set permissions for wikistorm application
   file: path=/var/www/wikistorm owner=unicorn group=unicorn mode=644 recurse=yes
