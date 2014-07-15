@@ -6,14 +6,16 @@
 
 - name: copy mysql config
   template: src=my.cnf dest=/etc/mysql/my.cnf
-  notify: restart mysql
+ 
+- name: restart mysql
+  service: name=mysql status=restarted
 
 - name: create wikistorm mysql user
   mysql_user: name=wikistormdb password=omgbbq host=% priv=wikistormdb.*:ALL state=present
 
 - name: flush privileges after user addition
   shell: bash -lc "mysql -e 'flush privileges'"
-  
+
 - name: create database wikistormdb
   mysql_db: name=wikistormdb state=present
 
