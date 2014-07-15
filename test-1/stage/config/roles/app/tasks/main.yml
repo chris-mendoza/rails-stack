@@ -79,3 +79,6 @@
 
 - name: install dependencies
   command: "bundle install --gemfile=/var/www/wikistorm/Gemfile"
+
+- name: use rake to create databases for wikistorm
+  command: "rake -f /var/www/wikistorm/Rakefile db:migrate"
