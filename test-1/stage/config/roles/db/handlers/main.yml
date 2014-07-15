@@ -1,2 +1,2 @@
 - name: restart mysql
-  service: name=mysql status=restarted
+  action: service name=mysql status=restarted
