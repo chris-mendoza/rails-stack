@@ -3,7 +3,7 @@ default: &default
   encoding: utf8
   pool: 5
   username: wikistormdb
-  password: 
+  password: omgbbq
   {% for host in groups['db'] %}
   host: {{ hostvars[host]['rax_addresses']['private'][0]['addr'] }}
   {% endfor %}
