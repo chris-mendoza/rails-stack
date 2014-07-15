@@ -40,6 +40,9 @@
 - name: install git
   apt: name=git state=latest
 
+- name: install nodejs
+  apt: name=nodejs state=latest
+
 - name: create wikistorm rails directory
   shell: bash -lc "/usr/local/rvm/gems/ruby-2.1.1/bin/rails new --force /var/www/wikistorm/"
 
