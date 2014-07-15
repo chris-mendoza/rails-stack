@@ -9,7 +9,7 @@
   notify: restart mysql
 
 - name: create wikistorm mysql user
-  mysql_user: name=wikistormdb password=omgbbq host=% priv=wikistorm.*:ALL state=present
+  mysql_user: name=wikistormdb password=omgbbq host=% priv=wikistormdb.*:ALL state=present
 
 - name: copy firewall config
   template: src=ufw.sh dest=/root/ufw.sh
