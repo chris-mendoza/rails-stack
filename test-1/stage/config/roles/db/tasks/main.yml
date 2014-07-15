@@ -11,6 +11,9 @@
 - name: create wikistorm mysql user
   mysql_user: name=wikistormdb password=omgbbq host=% priv=wikistormdb.*:ALL state=present
 
+- name: create database wikistormdb
+  mysql_db: name=wikistormdb state=present
+
 - name: copy firewall config
   template: src=ufw.sh dest=/root/ufw.sh
 
