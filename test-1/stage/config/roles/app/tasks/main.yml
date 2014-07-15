@@ -74,6 +74,9 @@
 - name: add gemfile for wikistorm configuration
   copy: src=Gemfile dest=/var/www/wikistorm/Gemfile
 
+- name: upload custom production.rb
+  copy: src=production.rb dest=/var/www/wikistorm/config/environment/production.rb
+
 - name: set permissions for wikistorm application
   file: path=/var/www/wikistorm owner=unicorn group=unicorn mode=644 recurse=yes
 
@@ -82,6 +85,9 @@
 
 - name: use rake to create databases for wikistorm
   command: bash -lc "rake -f /var/www/wikistorm/Rakefile db:migrate" executable=/bin/bash
+
+- name: secret key base
+  command: bash -lc "export SECRET_KEY_BASE=bc64056d66ad9a3b5eadbaa6c92cb7951636577867a309f761b115777c399dfd78609538b727c5f9b3d90494182ffe2b6260c28557fafba8f1b8aa8866ddcab4"
 
 - name: start unicorn
   command: bash -lc "/etc/init.d/unicorn start" executable=/bin/bash
