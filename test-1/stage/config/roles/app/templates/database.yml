@@ -5,7 +5,7 @@ default: &default
   username: wikistormdb
   password: omgbbq
 {% for host in groups['db'] %}
-host: {{ hostvars[host]['rax_addresses']['private'][0]['addr'] }}
+  host: {{ hostvars[host]['rax_addresses']['private'][0]['addr'] }}
 {% endfor %}
 
 development:
