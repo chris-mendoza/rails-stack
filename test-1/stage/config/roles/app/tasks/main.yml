@@ -11,7 +11,7 @@
   shell: bash -lc "/usr/local/rvm/bin/rvm gemset create rails" executable=/bin/bash
 
 - name: Set default gemset to persist through reboot
-  shell: bash -lc "/usr/local/rvm/bin/rvm use 2.1.1@rails --default" executable=/bin/bash
+  shell: bash -lc "rvm use 2.1.1@rails --default" executable=/bin/bash
 
 - name: install libmysqlclient-dev
   apt: name=libmysqlclient-dev state=latest
