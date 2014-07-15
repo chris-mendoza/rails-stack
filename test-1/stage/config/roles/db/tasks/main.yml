@@ -1,6 +1,9 @@
 - name: install mysql
   apt: name=mysql-server state=installed
 
+- name: start mysql
+  action: service name=mysql state=started
+
 - name: install python mysqldb connector
   apt: name=python-mysqldb state=latest
 
