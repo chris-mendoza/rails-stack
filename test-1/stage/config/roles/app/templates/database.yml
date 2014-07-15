@@ -4,17 +4,18 @@ default: &default
   pool: 5
   username: wikistormdb
   password: omgbbq
-  {% for host in groups['db'] %}
+{% for host in groups['db'] %}
   host: {{ hostvars[host]['rax_addresses']['private'][0]['addr'] }}
-  {% endfor %}
+{% endfor %}
+
 development:
   <<: *default
-  database: wikistormdev
+  database: wikistormdb
 
 test:
   <<: *default
-  database: wikistormtest
+  database: wikistormdb
 
 production:
   <<: *default
-  database: wikistorm
+  database: wikistormdb
