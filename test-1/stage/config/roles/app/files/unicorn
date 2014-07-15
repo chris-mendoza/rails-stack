@@ -80,7 +80,7 @@ cd $RAILS_ROOT || exit 1
 export PID=$RAILS_ROOT/tmp/pids/unicorn.pid
 export OLD_PID="$PID.oldbin"
  
-CMD="/usr/local/rvm/gems/`rvm current`/bin/unicorn -c config/unicorn.rb -E $RAILS_ENV -D"
+CMD="/usr/local/rvm/gems/ruby-2.1.1/bin/unicorn -c config/unicorn.rb -E $RAILS_ENV -D"
 }
  
 start_stop () {
